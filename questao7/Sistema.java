@@ -10,14 +10,20 @@ public class Sistema {
     public Sistema(){
         relogio = new Relogio();
         numUsuarios = 10;
-        //TODO: Lista de Usuario
-        listaUsuarios = new Usuario[numUsuarios];
-        for(int i = 0; i< numUsuarios;i++){
-            listaUsuarios[i] = new Usuario();
-        }
-        listaUsuarios[0].setNome("XPTO");
-        listaUsuarios[0].setSenha("AAAAA");
+        organizaUsuarios(questao7.Entradas.readArq("usuarios.txt"));
+    }
 
+    public static void organizaUsuarios(String str){
+        String[] usuarioSeparado = str.split(";");
+        listaUsuarios = new Usuario[numUsuarios];
+        for(int i = 0, j = 0, k = 1; i< numUsuarios;i++,j+=2,k+=2){
+            listaUsuarios[i] = new Usuario();
+            listaUsuarios[i].setNome(usuarioSeparado[j]);
+            listaUsuarios[i].setSenha(usuarioSeparado[k]);
+        }
+        for (int i = 0; i < numUsuarios; i++) {
+            System.out.println(listaUsuarios[i].getNome() + " " + listaUsuarios[i].getSenha());
+        }
     }
     public static void login(Usuario usuario){
         if(valido(usuario)){

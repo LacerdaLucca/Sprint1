@@ -4,10 +4,8 @@ public class Main {
         String nome = questao7.Entradas.readString();
         System.out.println("Digite a sua Senha ");
         String senha = questao7.Entradas.readString();
-        Usuario usuario = new Usuario(nome);
-        usuario.setSenha(senha);
+        Usuario usuario = new Usuario(nome,senha);
         Sistema sistema = new Sistema();
-
         Sistema.login(usuario);
     }
 }

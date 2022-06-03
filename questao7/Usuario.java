@@ -6,11 +6,12 @@ public class Usuario {
         this.nome = "";
         this.senha = "";
     }
-    public Usuario(String nome){
+    public Usuario(String nome, String senha){
         this.nome = nome;
-        this.senha = "";
+        this.senha = senha;
 
     }
+
 
     public void setNome(String nome) {
         this.nome = nome;

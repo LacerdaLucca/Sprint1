@@ -1,6 +1,7 @@
 package questao7;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
 public class Entradas {
@@ -39,6 +40,27 @@ public class Entradas {
         }catch (Exception ex){
             System.out.println("Essa entrada nao é valida digite novamente");
             retorno = readDouble();
+        }
+        return retorno;
+    }
+
+    public static String readArq(String arq){
+        String retorno = "";
+        try {
+            FileInputStream stream = new FileInputStream(arq);
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader br = new BufferedReader(reader);
+            String linha = br.readLine();
+            while (linha != null) {
+                retorno += linha;
+                linha = br.readLine();
+            }
+        }catch(Exception ex){
+            System.out.println("Erro na entrada, quer tentar de novo?");
+            String nt = readString();
+            if(nt.equals("sim") || nt.equals("s")) {
+                retorno = readArq(arq);
+            }
         }
         return retorno;
     }

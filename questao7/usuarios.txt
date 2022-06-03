@@ -1,0 +1,10 @@
+Davi;DDDD;
+Gina;GGGG;
+Gladson;GGGG;
+Lucca;LLLL;
+Matheus;MMMM;
+Nathalia;NNNN;
+Pedro;PPPP;
+Rafael;RRRR;
+Samuel;SSSS;
+Vinicius;VVVV;
