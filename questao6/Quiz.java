@@ -6,9 +6,20 @@ public class Quiz {
     private int quantAcertos;
 
     public Quiz(){
-        this.listaPergunta = new Pergunta[10];
-        for(int i = 0; i < quantPerguntas; i++) {
-            this.listaPergunta[i] = new Pergunta();
+        String arquivoQuiz = "quiz.txt";
+//        this.quantPerguntas = questao7.Entradas.contLines(arquivoQuiz)/3;
+        String arq = Entradas.readArq(arquivoQuiz);
+        String[] split = arq.split("P: ");
+        this.quantPerguntas = split.length-1;
+        this.listaPergunta = new Pergunta[quantPerguntas];
+        for(int i = 1; i <= quantPerguntas; i++) {
+            int j = i-1;
+            String[] conteudos  = split[i].split(": ");
+            String enunciado = conteudos[0].replace("A", "");
+            String aux = conteudos[1].replace("G", "");
+            String[] alternativas = aux.split(";");
+            char resp = conteudos[2].charAt(0);
+            this.listaPergunta[j] = new Pergunta(enunciado,alternativas,resp);
         }
     }
 
@@ -28,24 +39,29 @@ public class Quiz {
         return listaPergunta;
     }
 
-    public void checkResposta(String s){
-
-    }
-
-    public void checkGabarito(String s){
-
-    }
-
-    public void jogar(){
-        String respUsuario;
-        Scanner teclado = new Scanner(System.in);
-        for(int i = 0; i < quantPerguntas; i++){
-             System.out.println(listaPergunta[i].getEnunciado()
-                     +listaPergunta[i].getAlternativas());
-             respUsuario = teclado.next();
-             checkResposta(respUsuario);
-             checkGabarito(respUsuario);
-
+    private void checkGabarito(char s, Pergunta p){
+        if(s == p.getResposta()){
+            this.quantAcertos ++;
         }
     }
+
+    private void resultado(Usuario usuario){
+        System.out.println("Usuario " + usuario.getNome() +
+                "\nAcertos " + usuario.getAcertos() +
+                "\nErros " + usuario.getErros());
+    }
+    public void jogar(Usuario usuario){
+        char respUsuario;
+        for(int i = 0; i < quantPerguntas; i++){
+             listaPergunta[i].getPergunta();
+             respUsuario = Entradas.readString().charAt(0);//Poderia ser um readChar, mas como a maior parte dos casos de mais de uma letra serem por typo, achei melhor implementar pegando a primeira letra
+             System.out.println(respUsuario);
+             checkGabarito(respUsuario, listaPergunta[i]);
+
+        }
+        usuario.setAcertos(quantAcertos);
+        usuario.setErros(quantPerguntas-quantAcertos);
+        resultado(usuario);
+    }
+
 }

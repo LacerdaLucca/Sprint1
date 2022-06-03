@@ -1,0 +1,9 @@
+P: Qual o nome dos instrutores?
+A: andre e Renan;andre e ronaldo;anderson e ronaldo;anderson e renan;
+G: a
+P: Qual o nome da Empresa?
+A: Compasso;Compass;UOL;programa de bolsa;
+G: b
+P: Qual o seu nome?
+A: AAAAA;BBBBB;CCCCC;nenhuma das alternativas;
+G: d

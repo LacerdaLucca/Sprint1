@@ -1,10 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        Usuario usuario = new Usuario("XPTO");
+        System.out.println("Qual o seu nome?");
+        String nome = Entradas.readString();
+        Usuario usuario = new Usuario(nome);
         Quiz quiz = new Quiz();
-        quiz.jogar();
-        System.out.println("Usuario " + usuario.getNome() +
-                "\nAcertos " + usuario.getAcertos() +
-                "\nErros " + usuario.getErros());
+        quiz.jogar(usuario);
+
     }
 }

@@ -8,7 +8,7 @@ public class Usuario {
         this.erros = 0;
     }
     public Usuario(String nome){
-        this.nome = "XPTO";
+        this.nome = nome;
         this.acertos = 0;
         this.erros = 0;
     }

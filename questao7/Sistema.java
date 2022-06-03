@@ -10,7 +10,7 @@ public class Sistema {
     public Sistema(){
         relogio = new Relogio();
         numUsuarios = 10;
-        organizaUsuarios(questao7.Entradas.readArq("usuarios.txt"));
+        organizaUsuarios(Entradas.readArq("usuarios.txt"));
     }
 
     public static void organizaUsuarios(String str){
@@ -21,11 +21,9 @@ public class Sistema {
             listaUsuarios[i].setNome(usuarioSeparado[j]);
             listaUsuarios[i].setSenha(usuarioSeparado[k]);
         }
-        for (int i = 0; i < numUsuarios; i++) {
-            System.out.println(listaUsuarios[i].getNome() + " " + listaUsuarios[i].getSenha());
-        }
     }
-    public static void login(Usuario usuario){
+    public static boolean login(Usuario usuario){
+        boolean resp = true;
         if(valido(usuario)){
             if (!LocalTime.of(6, 0).isAfter(relogio.getHora()) && relogio.getHora().isBefore(LocalTime.of(12, 0))){
                 System.out.print("Bom dia");
@@ -40,7 +38,9 @@ public class Sistema {
             System.out.println(", você se logou ao nosso sistema.");
         }else{
             System.out.println("Usuário e/ou senha incorretos");
+            resp = false;
         }
+        return resp;
     }
     public static boolean valido(Usuario usuario){
         boolean ehValido = false;
