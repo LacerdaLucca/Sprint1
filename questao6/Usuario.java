@@ -1,5 +1,5 @@
 public class Usuario {
-    private String Nome;
+    private String nome;
     private int acertos;
     private int erros;
 
@@ -7,9 +7,14 @@ public class Usuario {
         this.acertos = 0;
         this.erros = 0;
     }
+    public Usuario(String nome){
+        this.nome = "XPTO";
+        this.acertos = 0;
+        this.erros = 0;
+    }
 
     public void setNome(String nome) {
-        Nome = nome;
+        nome = nome;
     }
 
     public void setAcertos(int acertos) {
@@ -21,7 +26,7 @@ public class Usuario {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public int getAcertos() {
