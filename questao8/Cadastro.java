@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 
 public interface Cadastro {
-    public static void cadastro() {
+    public static void cadastroSalario() {
         int quantFunc = 0;
         double salario = 0.0, bonus = 0.0, salLiq = 0.0;
         String nome = "";
@@ -12,7 +12,7 @@ public interface Cadastro {
             System.out.println("Escreva o nome do funcionario");
             nome = Entradas.readString();
             System.out.println("Escreva o seu salario");
-            salario = checkSalario(salario);
+            salario = Entradas.readDouble();
             listaFuncionario[i] = new Funcionario(nome,salario);
         }
         for (int i = 0; i < quantFunc; i++) {
@@ -27,15 +27,4 @@ public interface Cadastro {
                     "\n");
         }
     }
-    public static double checkSalario(double salario){
-        DecimalFormat df = new DecimalFormat("#.##");
-        try {
-            salario = Double.parseDouble(df.format(Entradas.readDouble()));
-        }catch (NumberFormatException ex){
-            System.out.println("Salario com mais de 2 casas decimais");
-            salario = checkSalario(salario);
-        }
-        return salario;
-    }
-
 }

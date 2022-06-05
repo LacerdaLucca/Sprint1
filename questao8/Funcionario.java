@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Funcionario {
     private String nome;
     private double salario;
@@ -11,7 +13,7 @@ public class Funcionario {
 
     public Funcionario(String nome, double salario){
         this.nome = nome;
-        this.salario = salario;
+        setSalario(salario);
         setBonus(bonificacao(salario));
     }
 
@@ -28,6 +30,7 @@ public class Funcionario {
     }
 
     public void setSalario(double salario) {
+        salario = checkValores(salario);
         this.salario = salario;
     }
 
@@ -36,6 +39,7 @@ public class Funcionario {
     }
 
     public void setBonus(double bonus) {
+        bonus = checkValores(bonus);
         this.bonus = bonus;
     }
 
@@ -49,5 +53,17 @@ public class Funcionario {
             bonificacao = -(salario*0.1);
         }
         return bonificacao;
+    }
+
+    public static double checkValores(double v){
+        DecimalFormat df = new DecimalFormat("#.##");
+        try {
+            v = Double.parseDouble(df.format(v).replace(",","."));
+
+        }catch (NumberFormatException ex){
+            System.out.println("Mais de 2 casas decimais");
+            v = checkValores(v);
+        }
+        return v;
     }
 }

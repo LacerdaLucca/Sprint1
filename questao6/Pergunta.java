@@ -6,7 +6,7 @@ public class Pergunta {
     public Pergunta(String enunciado, String[] alternativas, char resposta){
         this.enunciado = enunciado;
         this.alternativas = alternativas;
-        this.resposta = resposta;
+        this.resposta = Character.toUpperCase(resposta);
     }
     public String getEnunciado() {
         return enunciado;

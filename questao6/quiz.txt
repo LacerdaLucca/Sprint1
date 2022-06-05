@@ -4,6 +4,9 @@ G: a
 P: Qual o nome da Empresa?
 A: Compasso;Compass;UOL;programa de bolsa;
 G: b
+P: Qual o nome da SCRUM Master?
+A: Thauani;Tauany;Thauany;nenhuma das alternativas;
+G: c
 P: Qual o seu nome?
-A: AAAAA;BBBBB;CCCCC;nenhuma das alternativas;
+A: AAAAA;BBBBB;CCGCC;nenhuma das alternativas;
 G: d

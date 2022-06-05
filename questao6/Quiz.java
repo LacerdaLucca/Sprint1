@@ -14,9 +14,10 @@ public class Quiz {
         this.listaPergunta = new Pergunta[quantPerguntas];
         for(int i = 1; i <= quantPerguntas; i++) {
             int j = i-1;
+            split[i] = split[i].replace("A:", ":").replace("G:", ":");
             String[] conteudos  = split[i].split(": ");
-            String enunciado = conteudos[0].replace("A", "");
-            String aux = conteudos[1].replace("G", "");
+            String enunciado = conteudos[0];
+            String aux = conteudos[1];
             String[] alternativas = aux.split(";");
             char resp = conteudos[2].charAt(0);
             this.listaPergunta[j] = new Pergunta(enunciado,alternativas,resp);
@@ -40,6 +41,12 @@ public class Quiz {
     }
 
     private void checkGabarito(char s, Pergunta p){
+        s = Character. toUpperCase(s);
+        while((s > (65 + (p.getAlternativas().length-1)) || s < 65) && p.getAlternativas().length !=0){
+            System.out.println("Alternativa invalida " + s + "tente novamente");
+            s = Entradas.readString().charAt(0);
+            s = Character. toUpperCase(s);
+        }
         if(s == p.getResposta()){
             this.quantAcertos ++;
         }
@@ -54,8 +61,7 @@ public class Quiz {
         char respUsuario;
         for(int i = 0; i < quantPerguntas; i++){
              listaPergunta[i].getPergunta();
-             respUsuario = Entradas.readString().charAt(0);//Poderia ser um readChar, mas como a maior parte dos casos de mais de uma letra serem por typo, achei melhor implementar pegando a primeira letra
-             System.out.println(respUsuario);
+             respUsuario = Entradas.readString().charAt(0);//Poderia ser um readChar
              checkGabarito(respUsuario, listaPergunta[i]);
 
         }
